@@ -1,0 +1,14 @@
+FROM golang:1.19-alpine AS builder
+
+WORKDIR /build
+
+COPY ["go.*","*.go", "./"]
+RUN go mod download
+
+ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64
+RUN go build -ldflags="-s -w" -o webapp .
+
+FROM scratch
+COPY --from=builder ["/build/webapp", "/"]
+
+ENTRYPOINT ["/webapp"]
