@@ -30,7 +30,7 @@ var (
 	hist = prometheus.NewHistogramVec(
 		prometheus.HistogramOpts{
 			Namespace: "webapp",
-			Name:      "http_server_request_duration_seconds",
+			Name:      "webapp_http_server_request_duration_seconds",
 			Help:      "Histogram of response time for handler in seconds",
 			Buckets:   buckets,
 		},
