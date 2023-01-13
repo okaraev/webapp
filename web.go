@@ -38,7 +38,7 @@ var (
 )
 
 func GetSample(c *gin.Context) {
-	rand := rand.Intn(400)
+	rand := rand.Intn(600)
 	sleepDuration := time.Duration(rand * int(time.Millisecond))
 	time.Sleep(sleepDuration)
 	opsProcessed.Inc()
