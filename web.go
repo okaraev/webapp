@@ -17,7 +17,7 @@ type httpresponse struct {
 	Message string
 }
 
-var buckets = []float64{.1, .25, .5, .9, .99, .999, 1, 2.5}
+var buckets = []float64{.05, .1, .25, .5, .9, .99, .999, 1, 2.5}
 var (
 	opsProcessed = promauto.NewCounter(prometheus.CounterOpts{
 		Name: "webapp_processed_requests_total",
