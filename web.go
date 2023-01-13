@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math/rand"
 	"net/http"
 	"os"
@@ -44,7 +43,6 @@ func GetSample(c *gin.Context) {
 	time.Sleep(sleepDuration)
 	opsProcessed.Inc()
 	obs := float64(rand) / 1000
-	fmt.Println("Observing:", obs)
 	hist.WithLabelValues("/get", "GET", "200").Observe(obs)
 	c.IndentedJSON(200, httpresponse{Status: true, Message: "Success"})
 }
