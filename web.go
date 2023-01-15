@@ -17,7 +17,7 @@ type httpresponse struct {
 	Message string
 }
 
-var buckets = []float64{.001, .0025, .01, .025, .05, .075, .1, .2, .3, .4, .5, .6, .7, .8, .9, .99, .999, 1, 2.5}
+var buckets = []float64{.001, .0025, .01, .025, .05, .075, .1, .2, .3, .4, .5, .6, .7, .8, .9, 1, 2.5}
 var (
 	opsProcessed = promauto.NewCounter(prometheus.CounterOpts{
 		Name: "webapp_processed_requests_total",
@@ -38,7 +38,7 @@ var (
 )
 
 func GetSample(c *gin.Context) {
-	rand := rand.Intn(10)
+	rand := rand.Intn(1000)
 	sleepDuration := time.Duration(rand * int(time.Millisecond))
 	time.Sleep(sleepDuration)
 	opsProcessed.Inc()
